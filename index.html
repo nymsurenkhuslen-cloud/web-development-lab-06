@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лаб 6 - Зургийн Цомог Портал (Gallery)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Dark Mode toggle (JavaScript-гүй checkbox theme switch) -->
+  <input type="checkbox" id="theme-toggle" class="theme-toggle" aria-label="Dark mode сэлгэх" />
+
+  <div class="page-wrapper" id="top">
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#top" class="brand">
+          <!-- Хүртээмжтэй Inline SVG лого -->
+          <svg class="brand-icon" width="28" height="28" viewBox="0 0 24 24" role="img" aria-label="Цомгийн лого">
+            <rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2" />
+            <circle cx="8.5" cy="9.5" r="1.5" fill="currentColor" />
+            <path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <span>Зургийн Цомог Портал</span>
+        </a>
+
+        <div class="header-actions">
+          <nav class="navbar" aria-label="Үндсэн цэс">
+            <a href="#gallery">Gallery</a>
+            <a href="#flip-cards">3D Flip Card</a>
+            <a href="#multimedia">Multimedia</a>
+          </nav>
+
+          <label for="theme-toggle" class="theme-btn">Dark Mode</label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Stagger эффект бүхий Gallery хэсэг (--i custom property ашигласан) -->
+      <section id="gallery" class="section">
+        <div class="section-header">
+          <h1>Зургийн Цомог — Gallery</h1>
+          <p><code>@keyframes</code>, <code>animation-delay</code> ба <code>--i</code> хувьсагчаар шаталсан (stagger) хөдөлгөөн, <code>hover</code>/<code>focus</code> эффект.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-item" style="--i: 0;" tabindex="0">
+            <div class="thumb thumb-1">01</div>
+            <div class="caption">
+              <h2>Хотын үдшийн гэрэл</h2>
+              <p>Hover эсвэл Tab дарж focus хийхэд зөөлөн өсөж тодорно.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item" style="--i: 1;" tabindex="0">
+            <div class="thumb thumb-2">02</div>
+            <div class="caption">
+              <h2>Уулын өглөө</h2>
+              <p>Custom property (--i)-аар дараалсан хоцролттой гарч ирнэ.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item" style="--i: 2;" tabindex="0">
+            <div class="thumb thumb-3">03</div>
+            <div class="caption">
+              <h2>Намрын навчис</h2>
+              <p><code>prefers-reduced-motion</code> дэмжлэгтэй хөдөлгөөн.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item" style="--i: 3;" tabindex="0">
+            <div class="thumb thumb-4">04</div>
+            <div class="caption">
+              <h2>Далайн эрэг</h2>
+              <p>Design token хувьсагчаар гэрэл болон харанхуй горимд зохицно.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3D Flip Card хэсэг (perspective, preserve-3d, backface-visibility) -->
+      <section id="flip-cards" class="section">
+        <div class="section-header">
+          <h2>3D Flip Card</h2>
+          <p>Хулганаар гүйлгэх эсвэл <code>Tab</code> товчоор focus хийхэд карт 180 градус эргэнэ.</p>
+        </div>
+
+        <div class="flip-grid">
+          <div class="flip-card" tabindex="0" aria-label="Карт 1 эргүүлэх">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tag">Урд тал</span>
+                <h3>Хангайн нуруу</h3>
+                <p>Эргүүлж дэлгэрэнгүй харах (hover / focus)</p>
+              </div>
+              <div class="flip-card-back">
+                <span class="tag">Арын тал</span>
+                <h3>Тайлбар</h3>
+                <p><code>transform-style: preserve-3d</code> болон <code>backface-visibility: hidden</code> ашигласан.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" aria-label="Карт 2 эргүүлэх">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <span class="tag">Урд тал</span>
+                <h3>Говийн мандал</h3>
+                <p>Эргүүлж дэлгэрэнгүй харах (hover / focus)</p>
+              </div>
+              <div class="flip-card-back">
+                <span class="tag">Арын тал</span>
+                <h3>Тайлбар</h3>
+                <p>Хүртээмжтэй байдлын үүднээс keyboard focus (<code>:focus-within</code>) дээр ч эргэнэ.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multimedia хэсэг: video + track, iframe, inline SVG -->
+      <section id="multimedia" class="section">
+        <div class="section-header">
+          <h2>Multimedia (Video, Track, Iframe &amp; SVG)</h2>
+          <p>Хүртээмжтэй хадмал (<code>&lt;track&gt;</code>), аюулгүй <code>&lt;iframe&gt;</code> ба vector дүрслэл.</p>
+        </div>
+
+        <div class="media-grid">
+          <!-- 1. video + track -->
+          <article class="media-card">
+            <h3>Video ба Track (Хадмал)</h3>
+            <video controls preload="metadata" class="video-player">
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+              <!-- Inline WebVTT track data URL -->
+              <track
+                kind="captions"
+                srclang="mn"
+                label="Монгол хадмал"
+                src="data:text/vtt;charset=utf-8,WEBVTT%0A%0A00%3A00.000%20--%3E%2000%3A05.000%0A%D0%97%D1%83%D1%80%D0%B3%D0%B8%D0%B9%D0%BD%20%D1%86%D0%BE%D0%BC%D0%BE%D0%B3%20%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB%D1%8B%D0%BD%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%20%D1%82%D0%B0%D0%BD%D0%B8%D0%BB%D1%86%D1%83%D1%83%D0%BB%D0%B3%D0%B0."
+                default
+              />
+              Таны хөтөч video шошгыг дэмжихгүй байна.
+            </video>
+            <p class="media-note">Хөтөч дээр видеоны хадмал (CC) сонгох <code>&lt;track&gt;</code> мөр суулгасан.</p>
+          </article>
+
+          <!-- 2. Аюулгүй iframe -->
+          <article class="media-card">
+            <h3>Аюулгүй Iframe</h3>
+            <div class="iframe-wrap">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=106.85%2C47.88%2C106.98%2C47.95&amp;layer=mapnik"
+                title="Улаанбаатар хотын газрын зураг"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                sandbox="allow-scripts allow-same-origin"
+              ></iframe>
+            </div>
+            <p class="media-note"><code>sandbox</code>, <code>referrerpolicy="no-referrer"</code> ба тодорхой <code>title</code> ашигласан.</p>
+          </article>
+
+          <!-- 3. Inline SVG -->
+          <article class="media-card">
+            <h3>Inline SVG Диаграм</h3>
+            <div class="svg-wrap">
+              <svg width="220" height="120" viewBox="0 0 220 120" role="img" aria-label="CSS3 шинж чанаруудын бүдүүвч">
+                <rect x="10" y="20" width="60" height="80" rx="10" fill="var(--accent)" opacity="0.2" stroke="var(--accent)" stroke-width="2" />
+                <text x="40" y="65" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="bold">Flex/Grid</text>
+
+                <rect x="80" y="20" width="60" height="80" rx="10" fill="var(--primary)" opacity="0.2" stroke="var(--primary)" stroke-width="2" />
+                <text x="110" y="65" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="bold">3D Flip</text>
+
+                <rect x="150" y="20" width="60" height="80" rx="10" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2" />
+                <text x="180" y="65" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="bold">Tokens</text>
+              </svg>
+            </div>
+            <p class="media-note">Custom property өнгөтэй шууд холбогдсон вектор зураг.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>&copy; 2026 Нямсүрэн Хүслэн — ЛАБ 6</p>
+        <a href="#top">Дээш буцах &uarr;</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
